@@ -8,6 +8,8 @@ protected:
 	char _sign;
 
 public:
+	Figure();
+
 	Figure(Position pos, char sign);
 
 	Position get_pos() const;

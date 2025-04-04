@@ -22,6 +22,8 @@ void init_board(Figure figure)
 
 void print_board()
 {
+	std::cout << '\n';
+
 	for (short i = Board::row; i > 0; i--)
 	{
 		std::cout << i << ' ';
@@ -43,36 +45,60 @@ void print_figure_choice()
 
 int main()
 {
-	short choice_option = 1;
 	Position start_pos = { 1, 3 };
-	Figure figure(start_pos, ' ');
+	short choice_option = 1;
+	Figure* figure = nullptr;
 
 	switch (choice_option)
 	{
 	case PAWN:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	case KNIGHT:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	case BISHOP:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	case ROOK:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	case QUEEN:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	case KING:
-		figure = King(start_pos);
+		figure = new King(start_pos);
 		break;
 	default:
 		break;
 	}
-	
-	init_board(figure);
+	init_board(*figure);
 	print_board();
+	while (1)
+	{
+		Position new_pos;
+		std::cout << "\nEnter new position (e.g e3, f7):\t";
+		char sym;
+		std::cin >> sym;
+		
+		std::cin >> new_pos.y;
+		new_pos.x = sym - 97;
+		new_pos.y--;
+		switch (figure->move(new_pos))
+		{
+		case -2:
+			std::cout << "Can not move to current position\n";
+			break;
+		case -1:
+			std::cout << "Point out of chessboard area\n";
+			break;
+		case 0:
+			std::cout << "Inaccessible point for selected figure\n";
+			break;
+		}
+		print_board();
+	}
+
 	return 0;
 }
 

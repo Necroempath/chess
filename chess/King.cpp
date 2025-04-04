@@ -8,6 +8,8 @@ short King::move(Position pos)
 	if ((_pos.y - pos.y) > 1 || (_pos.y - pos.y) < -1 || (_pos.x - pos.x) > 1 || (_pos.x - pos.x) < -1) return -2;
 
 	Board::board[_pos.y][_pos.x] = ' ';
-	Board::board[pos.y][pos.y] = _sign;
+	Board::board[pos.y][pos.x] = _sign;
+	_pos = pos;
+
 	return 1;
 }

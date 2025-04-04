@@ -8,5 +8,7 @@ public:
 	King(Position pos);
 
 	short move(Position pos) override;
+
+	
 };
 
