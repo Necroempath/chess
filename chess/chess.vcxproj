@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="chess.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="King.cpp" />

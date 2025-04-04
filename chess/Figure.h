@@ -9,6 +9,9 @@ protected:
 
 public:
 	Figure(Position pos, char sign);
+
+	Position get_pos() const;
+
 	char get_sign() const;
 
 	virtual short move(Position pos);

@@ -1,7 +1,8 @@
 #include <iostream>
-//#include "Figure.h"
-//#include "King.h"
+#include "Figure.h"
+#include "King.h"
 #include "Board.h"
+
 enum Figures
 {
 	PAWN = 1,
@@ -12,11 +13,11 @@ enum Figures
 	KING
 };
 
-void init_board(short y = 0, short x = 0, char sign = ' ')
+void init_board(Figure figure)
 {
 	for (short i = 0; i < Board::row; i++)	for (short j = 0; j < Board::col; j++) Board::board[i][j] = ' ';
 
-	Board::board[y][x] = sign;
+	Board::board[figure.get_pos().y][figure.get_pos().x] = figure.get_sign();
 }
 
 void print_board()
@@ -42,32 +43,35 @@ void print_figure_choice()
 
 int main()
 {
-	/*short choice_option;
-	Figure figure(6, 4, ' ');
+	short choice_option = 1;
+	Position start_pos = { 1, 3 };
+	Figure figure(start_pos, ' ');
+
 	switch (choice_option)
 	{
 	case PAWN:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	case KNIGHT:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	case BISHOP:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	case ROOK:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	case QUEEN:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	case KING:
-		figure = King(6, 4);
+		figure = King(start_pos);
 		break;
 	default:
 		break;
-	}*/
-	init_board();
+	}
+	
+	init_board(figure);
 	print_board();
 	return 0;
 }
