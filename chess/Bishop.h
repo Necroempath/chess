@@ -1,10 +1,10 @@
 #pragma once
 #include "Figure.h"
 
-class King : public Figure
+class Bishop : public Figure
 {
 public:
-	King(Position pos);
+	Bishop(Position pos);
 
 	bool move(Position pos) override;
 };

@@ -1,5 +1,9 @@
 #pragma once
-#include "Board.h"
+
+struct Position
+{
+	short y, x;
+};
 
 class Figure
 {
@@ -8,14 +12,13 @@ protected:
 	char _sign;
 
 public:
-	Figure();
-
 	Figure(Position pos, char sign);
 
 	Position get_pos() const;
 
 	char get_sign() const;
 
-	virtual short move(Position pos);
+	virtual bool move(Position pos);
 };
 
+short abs(short value);

@@ -1,11 +1,11 @@
 #pragma once
 #include "Figure.h"
 
-class King : public Figure
+class Pawn : public Figure
 {
+	short _first_move;
 public:
-	King(Position pos);
+	Pawn(Position pos);
 
 	bool move(Position pos) override;
 };
-
