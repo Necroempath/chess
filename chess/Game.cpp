@@ -12,23 +12,29 @@ void Game::init_figure(const Position& current_pos)
 {
 	switch (figure_select())
 	{
-	case 1:
+	case PAWN:
 		_figure = new Pawn(current_pos);
+		_type = PAWN;
 		break;
-	case 2:
+	case KNIGHT:
 		_figure = new Knight(current_pos);
+		_type = KNIGHT;
 		break;
-	case 3:
+	case BISHOP:
 		_figure = new Bishop(current_pos);
+		_type = BISHOP;
 		break;
-	case 4:
+	case ROOK:
 		_figure = new Rook(current_pos);
+		_type = ROOK;
 		break;
-	case 5:
+	case QUEEN:
 		_figure = new Queen(current_pos);
+		_type = QUEEN;
 		break;
 	default:
 		_figure = new King(current_pos);
+		_type = KING;
 		break;
 	}
 }
@@ -83,7 +89,9 @@ void Game::pawn_ascension(const Position& new_pos)
 {
 	if (new_pos.y == _row - 1)
 	{
+		delete _figure;
 		_figure = new Queen(new_pos);
+		_type = QUEEN;
 		_board[new_pos.y][new_pos.x] = 'Q';
 	}
 }
@@ -132,9 +140,14 @@ void Game::start_game()
 
 		print_msg(move_figure(new_pos, current_pos));
 
-		if (_figure->get_sign() == 'P') pawn_ascension(new_pos);
+		if (_type == PAWN) pawn_ascension(new_pos);
 		{
 			pawn_ascension(new_pos);
 		}
 	}
+}
+
+Game::~Game() 
+{
+	delete _figure;
 }

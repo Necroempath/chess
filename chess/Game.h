@@ -8,11 +8,21 @@
 #include "Knight.h"
 #include "Pawn.h"
 
+enum FigureType {
+	PAWN = 1,
+	KNIGHT,
+	BISHOP,
+	ROOK,
+	QUEEN,
+	KING
+};
+
 class Game
 {
 	short _row, _col;
 	char _board[8][8];
 	Figure* _figure;
+	FigureType _type;
 
 	const short figure_select() const;
 
@@ -32,5 +42,7 @@ public:
 	Game();
 
 	void start_game();
+
+	~Game();
 };
 
