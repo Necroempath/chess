@@ -18,7 +18,7 @@ public:
 
 	char get_sign() const;
 
-	virtual bool move(Position pos);
+	virtual bool move(Position pos) = 0;
 };
 
 short abs(short value);

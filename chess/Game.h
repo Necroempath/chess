@@ -8,31 +8,29 @@
 #include "Knight.h"
 #include "Pawn.h"
 
-enum Figures
-{
-	PAWN = 1,
-	KNIGHT,
-	BISHOP,
-	ROOK,
-	QUEEN,
-	KING
-};
-
 class Game
 {
 	short _row, _col;
 	char _board[8][8];
 	Figure* _figure;
 
-	void init_board(Figure* figure);
-
 	const short figure_select() const;
+
+	void init_figure(const Position& current_pos);
+
+	void init_new_pos(Position& new_pos);
+
+	short move_figure(const Position& new_pos, const Position& current_pos);
+	
+	void print_msg(short msg_code);
+
+	void pawn_ascension(const Position& new_pos);
+
+	void print_board() const;
 
 public:
 	Game();
 
 	void start_game();
-
-	void print_board() const;
 };
 

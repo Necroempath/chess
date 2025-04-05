@@ -4,6 +4,7 @@
 class Pawn : public Figure
 {
 	short _first_move;
+
 public:
 	Pawn(Position pos);
 
